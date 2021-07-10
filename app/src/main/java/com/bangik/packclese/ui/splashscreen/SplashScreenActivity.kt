@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.bangik.packclese.MainActivity
 import com.bangik.packclese.R
 import com.bangik.packclese.ui.auth.AuthActivity
 
