@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bangik.packclese.R
 import com.bangik.packclese.model.dummy.ProfileMenuModel
-
 import com.bangik.packclese.ui.profile.ProfileMenuAdapter
 import kotlinx.android.synthetic.main.fragment_profile_account.*
 
@@ -49,7 +48,9 @@ class ProfileAccountFragment : Fragment(), ProfileMenuAdapter.ItemAdapterCallbac
     override fun onClick(v: View, data: ProfileMenuModel) {
 
         if (data.title == "Edit Profile") {
-            Toast.makeText(context, "Edit Profile", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(activity, EditActivity::class.java)
+            startActivity(intent)
 
         }else if (data.title == "Home Address"){
             Toast.makeText(context, "Home Address", Toast.LENGTH_SHORT).show()
