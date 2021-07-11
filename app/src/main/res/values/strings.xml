@@ -7,4 +7,6 @@
     <string name="title_dashboard">Order</string>
     <string name="title_notifications">Porfile</string>
     <string name="ini_adalah_icon_ok" />
+    <string name="search_elements">Search Elements</string>
+    <string name="trending">TRENDING</string>
 </resources>
