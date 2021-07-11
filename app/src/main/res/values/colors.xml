@@ -12,8 +12,5 @@
     <color name="colorPrimaryLight">#E9F8F1</color>
     <color name="colorTrendingStart">#6e94ff</color>
     <color name="colorTrendingEnd">#93ff78</color>
-    <color name="home">#5B37B7</color>
-    <color name="order">#C9379D</color>
-    <color name="profile">#1194AA</color>
 
 </resources>
