@@ -52,6 +52,12 @@
         <item name="android:textColor">#020202</item>
         <item name="android:textSize">14sp</item>
     </style>
+    <style name="TextView.PoppinsNormal14sp1ABC9C">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">#020202</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="Button"/>
     <style name="Button.Primary">
         <item name="android:fontFamily">@font/poppins</item>
