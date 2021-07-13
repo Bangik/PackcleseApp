@@ -9,4 +9,8 @@
     <string name="ini_adalah_icon_ok" />
     <string name="search_elements">Search Elements</string>
     <string name="trending">TRENDING</string>
+    <string name="loremIpsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+    </string>
 </resources>
