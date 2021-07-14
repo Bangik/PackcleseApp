@@ -1,6 +1,7 @@
 package com.bangik.packclese.network
 
 import com.bangik.packclese.model.response.Wrapper
+import com.bangik.packclese.model.response.checkout.CheckoutBersihResponse
 import com.bangik.packclese.model.response.checkout.CheckoutLaundryResponse
 import com.bangik.packclese.model.response.home.HomeResponse
 import com.bangik.packclese.model.response.login.LoginResponse
@@ -40,6 +41,18 @@ interface Endpoint {
                         @Field("weight") weight:String,
                         @Field("antar") antar:String,
                         @Field("paymentMethod") paymentMethod:String) : Observable<Wrapper<CheckoutLaundryResponse>>
+
+    @GET("data-services?id=2")
+    fun bersih() : Observable<Wrapper<ServiceResponse>>
+
+    @FormUrlEncoded
+    @POST("checkout-bersih")
+    fun checkoutBersih(@Field("user_id") user_id:String,
+                       @Field("total") total:String,
+                       @Field("service_id") service_id:String,
+                       @Field("address") address:String,
+                       @Field("space") space:String,
+                       @Field("paymentMethod") paymentMethod:String) : Observable<Wrapper<CheckoutBersihResponse>>
 
     @Multipart
     @POST("user/photo")

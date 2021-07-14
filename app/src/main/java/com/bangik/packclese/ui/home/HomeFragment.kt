@@ -12,6 +12,7 @@ import com.bangik.packclese.Packclese
 import com.bangik.packclese.R
 import com.bangik.packclese.model.response.home.HomeResponse
 import com.bangik.packclese.model.response.login.User
+import com.bangik.packclese.ui.detail.bersih.DetailBersihActivity
 import com.bangik.packclese.ui.detail.laundry.DetailLaundryActivity
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
@@ -38,6 +39,11 @@ class HomeFragment : Fragment(),HomeContract.View {
 
         cardLaundry.setOnClickListener{
             val detail = Intent(activity, DetailLaundryActivity::class.java)
+            startActivity(detail)
+        }
+
+        cardBersih.setOnClickListener{
+            val detail = Intent(activity, DetailBersihActivity::class.java)
             startActivity(detail)
         }
     }
