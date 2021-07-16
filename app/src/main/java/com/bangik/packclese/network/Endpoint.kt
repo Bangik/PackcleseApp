@@ -6,6 +6,9 @@ import com.bangik.packclese.model.response.checkout.CheckoutLaundryResponse
 import com.bangik.packclese.model.response.home.HomeResponse
 import com.bangik.packclese.model.response.login.LoginResponse
 import com.bangik.packclese.model.response.profile.ProfileEditResponse
+import com.bangik.packclese.model.response.rajaongkir.KotaResponse
+import com.bangik.packclese.model.response.rajaongkir.KotaTujuanResponse
+import com.bangik.packclese.model.response.rajaongkir.ProvinsiResponse
 import com.bangik.packclese.model.response.service.ServiceResponse
 import io.reactivex.Observable
 import okhttp3.MultipartBody
@@ -66,4 +69,20 @@ interface Endpoint {
         @Field("email") email: String,
         @Field("address") address: String,
         @Field("phoneNumber") phoneNumber: String) : Observable<Wrapper<ProfileEditResponse>>
+
+    @GET("data-provinsi")
+    fun dataProvinsi() : Observable<Wrapper<ProvinsiResponse>>
+
+    @GET("data-kota/{id}")
+    fun datakota(
+        @Path(value = "id") id:String
+    ) : Observable<Wrapper<KotaResponse>>
+
+    @GET("data-kota/{id}")
+    fun datakotaTujuan(
+        @Path(value = "id") id:String
+    ) : Observable<Wrapper<KotaTujuanResponse>>
+
+    @GET("data-services?id=3")
+    fun paket() : Observable<Wrapper<ServiceResponse>>
 }
