@@ -54,7 +54,7 @@ class EditPresenter(private val view: EditContract.View) : EditContract.Presente
                         {
 
                             if (it.meta?.status.equals("success",true)){
-                                it.data?.let { it1 -> view.onEditPhotoSuccess(viewParms) }
+                                it.data?.let { it1 -> view.onEditPhotoSuccess(it1,viewParms) }
                             } else {
                                 view.onEditFailed(it.meta?.message.toString())
                             }

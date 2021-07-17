@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bangik.packclese.Packclese
 import com.bangik.packclese.R
+import com.bangik.packclese.model.response.login.UploadPhotoResponse
 import com.bangik.packclese.model.response.login.User
 import com.bangik.packclese.model.response.profile.ProfileEditResponse
 import com.bangik.packclese.ui.MainActivity
@@ -67,14 +68,9 @@ class EditActivity : AppCompatActivity(), EditContract.View {
 
 
     override fun onEditSuccess(ProfileEditResponse: ProfileEditResponse,view: EditContract.View) {
-
-
         val gson = Gson()
         val json = gson.toJson(ProfileEditResponse.user)
         Packclese.getApp().setUser(json)
-
-        Toast.makeText(applicationContext, "Kamu Berhasil", Toast.LENGTH_SHORT).show()
-
 
         if (filePath == null) {
             val home = Intent(this, MainActivity::class.java)
@@ -105,8 +101,15 @@ class EditActivity : AppCompatActivity(), EditContract.View {
         Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onEditPhotoSuccess(view: EditContract.View) {
-        Toast.makeText(applicationContext, "Photo Berhasil Di Update", Toast.LENGTH_SHORT).show()
+    override fun onEditPhotoSuccess(
+        uploadPhotoResponse: UploadPhotoResponse,
+        view: EditContract.View
+    ) {
+        val gson = Gson()
+        val json = gson.toJson(uploadPhotoResponse.user)
+        Packclese.getApp().setUser(json)
+
+        Toast.makeText(applicationContext, "Kamu Berhasil", Toast.LENGTH_SHORT).show()
     }
 
 
