@@ -1,19 +1,19 @@
-package com.bangik.packclese.ui.detail.paket
+package com.bangik.packclese.ui.detail.titip
 
 import com.bangik.packclese.network.HttpClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class PaketPresenter(private val view:PaketContract.View) : PaketContract.Presenter {
+class TitipPresenter(private val view:TitipContract.View): TitipContract.Presenter {
     private val mCompositeDisposable : CompositeDisposable?
     init {
         this.mCompositeDisposable = CompositeDisposable()
     }
 
-    override fun getPaket() {
+    override fun getTitip() {
         view.showLoading()
-        val disposable = HttpClient.getInstance().getApi()!!.paket()
+        val disposable = HttpClient.getInstance().getApi()!!.titip()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -21,14 +21,14 @@ class PaketPresenter(private val view:PaketContract.View) : PaketContract.Presen
                     view.dismissLoading()
 
                     if (it.meta?.status.equals("success",true)){
-                        it.data?.let { it1 -> view.onPaketSuccess(it1) }
+                        it.data?.let { it1 -> view.onTitipSuccess(it1) }
                     } else {
-                        it.meta?.message?.let { it1 -> view.onPaketFailed(it1) }
+                        it.meta?.message?.let { it1 -> view.onTitipFailed(it1) }
                     }
                 },
                 {
                     view.dismissLoading()
-                    view.onPaketFailed(it.message.toString())
+                    view.onTitipFailed(it.message.toString() + " dari throwable")
                 }
             )
         mCompositeDisposable!!.add(disposable)

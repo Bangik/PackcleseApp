@@ -5,7 +5,6 @@ import com.bangik.packclese.model.response.checkout.CheckoutBersihResponse
 import com.bangik.packclese.model.response.checkout.CheckoutLaundryResponse
 import com.bangik.packclese.model.response.home.HomeResponse
 import com.bangik.packclese.model.response.login.LoginResponse
-import com.bangik.packclese.model.response.login.UploadPhotoResponse
 import com.bangik.packclese.model.response.profile.ProfileEditResponse
 import com.bangik.packclese.model.response.rajaongkir.KotaResponse
 import com.bangik.packclese.model.response.rajaongkir.KotaTujuanResponse
@@ -60,7 +59,7 @@ interface Endpoint {
 
     @Multipart
     @POST("user/photo")
-    fun registerPhoto(@Part profileImage: MultipartBody.Part) : Observable<Wrapper<UploadPhotoResponse>>
+    fun registerPhoto(@Part profileImage: MultipartBody.Part) : Observable<Wrapper<Any>>
 
     @FormUrlEncoded
     @POST("user/edit")

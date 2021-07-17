@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_detail_paket"
+    app:startDestination="@id/detailPaketFragment">
+
+    <fragment
+        android:id="@+id/detailPaketFragment"
+        android:name="com.bangik.packclese.ui.detail.paket.DetailPaketFragment"
+        android:label="fragment_detail_paket"
+        tools:layout="@layout/fragment_detail_paket" />
+</navigation>
