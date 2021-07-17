@@ -13,6 +13,7 @@ import com.bangik.packclese.Packclese
 import com.bangik.packclese.R
 import com.bangik.packclese.model.request.RegisterRequest
 import com.bangik.packclese.model.response.login.LoginResponse
+import com.bangik.packclese.model.response.login.UploadPhotoResponse
 import com.bangik.packclese.ui.auth.AuthActivity
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_signup_address.*
@@ -90,10 +91,6 @@ class SignupAddressFragment : Fragment(), SignupContract.View  {
     override fun onRegisterSuccess(loginResponse: LoginResponse, view: View) {
         Packclese.getApp().setToken(loginResponse.access_token)
 
-        val gson = Gson()
-        val json = gson.toJson(loginResponse.user)
-        Packclese.getApp().setUser(json)
-
         if (data.filePath == null) {
             Navigation.findNavController(view)
                     .navigate(R.id.action_signup_success, null)
@@ -104,7 +101,11 @@ class SignupAddressFragment : Fragment(), SignupContract.View  {
         }
     }
 
-    override fun onRegisterPhotoSuccess(view: View) {
+    override fun onRegisterPhotoSuccess(uploadPhotoResponse: UploadPhotoResponse, view: View) {
+        val gson = Gson()
+        val json = gson.toJson(uploadPhotoResponse.user)
+        Packclese.getApp().setUser(json)
+        
         Navigation.findNavController(view)
                 .navigate(R.id.action_signup_success, null)
         (activity as AuthActivity).toolbarSignUpSuccess()

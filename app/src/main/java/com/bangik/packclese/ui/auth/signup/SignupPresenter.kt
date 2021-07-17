@@ -63,7 +63,7 @@ class SignupPresenter(private val view:SignupContract.View) : SignupContract.Pre
                             view.dismissLoading()
 
                             if (it.meta?.status.equals("success",true)){
-                                it.data?.let { it1 -> view.onRegisterPhotoSuccess(viewParms) }
+                                it.data?.let { it1 -> view.onRegisterPhotoSuccess(it1, viewParms) }
                             } else {
                                 view.onRegisterFailed(it.meta?.message.toString())
                             }
