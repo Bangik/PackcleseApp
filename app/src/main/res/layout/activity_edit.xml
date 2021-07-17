@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="#FFF"
-android:layout_marginTop="24dp"
-android:paddingLeft="24dp"
-android:paddingRight="24dp"
-android:paddingTop="26dp"
-android:orientation="vertical"
-tools:context=".ui.profile.account.EditActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:layout_marginTop="24dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingTop="26dp"
+    android:orientation="vertical"
+    tools:context=".ui.profile.account.EditActivity">
 
     <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/EditProfil"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_picture_empty"
+        android:layout_width="110dp"
+        android:layout_height="110dp"/>
+
     <TextView
         style="@style/TextView.PoppinsNormal16sp020202"
         android:layout_width="match_parent"
