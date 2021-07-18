@@ -33,5 +33,8 @@ data class Service(
     val rate: Int,
     @Expose
     @SerializedName("updated_at")
-    val updated_at: String
+    val updated_at: String,
+    @Expose
+    @SerializedName("jenis_services")
+    val jenis_services: JenisServices
 ): Parcelable

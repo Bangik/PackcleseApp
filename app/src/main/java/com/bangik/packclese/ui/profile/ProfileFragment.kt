@@ -45,10 +45,8 @@ class ProfileFragment : Fragment() {
             Toast.makeText(context, "data telah diubah harap di update", Toast.LENGTH_LONG).show()
 
         }else {
-            nama.text = userResponse.name.toString()
-            email.text = userResponse.email.toString()
-            Toast.makeText(context, userResponse.name, Toast.LENGTH_LONG).show()
-
+            nama.text = userResponse.name
+            email.text = userResponse.email
         }
         if (!userResponse.profile_photo_path.isNullOrEmpty()) {
 

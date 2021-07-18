@@ -59,10 +59,7 @@ class EditActivity : AppCompatActivity(), EditContract.View {
             }
             else {
                 presenter.subimEdit(id, name, email, address, phoneNumber,photo )
-
-
             }
-//            presenter.subimtLogin("admin@gmail.com", "admin")
         }
     }
 
@@ -83,17 +80,7 @@ class EditActivity : AppCompatActivity(), EditContract.View {
             val home = Intent(this, MainActivity::class.java)
             startActivity(home)
             finish()
-
         }
-
-//
-//        val navController = Navigation.findNavController(
-//                this!!,
-//                R.id.navigation_profile
-//        )
-//        navController.navigate(R.id.navigation_profile)
-//        navController.navigateUp()
-
     }
 
 
@@ -109,7 +96,7 @@ class EditActivity : AppCompatActivity(), EditContract.View {
         val json = gson.toJson(uploadPhotoResponse.user)
         Packclese.getApp().setUser(json)
 
-        Toast.makeText(applicationContext, "Kamu Berhasil", Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "Data berhasil dirubah", Toast.LENGTH_SHORT).show()
     }
 
 

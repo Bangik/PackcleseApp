@@ -35,9 +35,9 @@ class InprogressAdapter (
                 tvTitle.text = data.detail_transaction[0].service.name
                 tvPrice.formatPrice(data.detail_transaction[0].service.price.toString())
 
-//                Glide.with(context)
-//                    .load(data.detail_transaction.service.picturePath)
-//                    .into(ivPoster)
+                Glide.with(context)
+                    .load(data.detail_transaction[0].service.jenis_services.picturePath)
+                    .into(ivPoster)
 
                 itemView.setOnClickListener { itemAdapterCallback.onClick(it, data) }
             }
