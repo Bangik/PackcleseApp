@@ -3,13 +3,18 @@ package com.bangik.packclese.network
 import com.bangik.packclese.model.response.Wrapper
 import com.bangik.packclese.model.response.checkout.CheckoutBersihResponse
 import com.bangik.packclese.model.response.checkout.CheckoutLaundryResponse
+import com.bangik.packclese.model.response.checkout.CheckoutPaketResponse
+import com.bangik.packclese.model.response.checkout.CheckoutTitipResponse
 import com.bangik.packclese.model.response.home.HomeResponse
 import com.bangik.packclese.model.response.login.LoginResponse
+import com.bangik.packclese.model.response.login.UploadPhotoResponse
 import com.bangik.packclese.model.response.profile.ProfileEditResponse
+import com.bangik.packclese.model.response.rajaongkir.CekongkirResponse
 import com.bangik.packclese.model.response.rajaongkir.KotaResponse
 import com.bangik.packclese.model.response.rajaongkir.KotaTujuanResponse
 import com.bangik.packclese.model.response.rajaongkir.ProvinsiResponse
 import com.bangik.packclese.model.response.service.ServiceResponse
+import com.bangik.packclese.model.response.transaction.TransactionResponse
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import retrofit2.http.*
@@ -59,7 +64,7 @@ interface Endpoint {
 
     @Multipart
     @POST("user/photo")
-    fun registerPhoto(@Part profileImage: MultipartBody.Part) : Observable<Wrapper<Any>>
+    fun registerPhoto(@Part profileImage: MultipartBody.Part) : Observable<Wrapper<UploadPhotoResponse>>
 
     @FormUrlEncoded
     @POST("user/edit")
@@ -69,6 +74,9 @@ interface Endpoint {
         @Field("email") email: String,
         @Field("address") address: String,
         @Field("phoneNumber") phoneNumber: String) : Observable<Wrapper<ProfileEditResponse>>
+
+    @GET("history-transactions")
+    fun transaction() : Observable<Wrapper<TransactionResponse>>
 
     @GET("data-provinsi")
     fun dataProvinsi() : Observable<Wrapper<ProvinsiResponse>>
@@ -85,4 +93,39 @@ interface Endpoint {
 
     @GET("data-services?id=3")
     fun paket() : Observable<Wrapper<ServiceResponse>>
+
+    @GET("hitung-ongkir")
+    fun cekOngkir(
+        @Query("origin") origin:String,
+        @Query("destination") destination:String,
+        @Query("weight") weight:String,
+        @Query("courier") courier:String
+    ) : Observable<Wrapper<CekongkirResponse>>
+
+    @FormUrlEncoded
+    @POST("checkout-paket")
+    fun checkoutPaket(@Field("user_id") user_id:String,
+                      @Field("total") total:String,
+                      @Field("service_id") service_id:String,
+                      @Field("address") address:String,
+                      @Field("origin") origin:String,
+                      @Field("destination") destination:String,
+                      @Field("weight") weight:String,
+                      @Field("courier") courier:String,
+                      @Field("ongkir") ongkir:String,
+                      @Field("paymentMethod") paymentMethod:String) : Observable<Wrapper<CheckoutPaketResponse>>
+
+    @GET("data-services?id=4")
+    fun titip() : Observable<Wrapper<ServiceResponse>>
+
+    @FormUrlEncoded
+    @POST("checkout-titip")
+    fun checkoutTitip(@Field("user_id") user_id:String,
+                      @Field("total") total:String,
+                      @Field("service_id") service_id:String,
+                      @Field("address") address:String,
+                      @Field("start") start:String,
+                      @Field("end") end:String,
+                      @Field("quantity") quantity:String,
+                      @Field("paymentMethod") paymentMethod:String) : Observable<Wrapper<CheckoutTitipResponse>>
 }

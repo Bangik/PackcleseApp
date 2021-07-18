@@ -14,6 +14,8 @@ import com.bangik.packclese.model.response.home.HomeResponse
 import com.bangik.packclese.model.response.login.User
 import com.bangik.packclese.ui.detail.bersih.DetailBersihActivity
 import com.bangik.packclese.ui.detail.laundry.DetailLaundryActivity
+import com.bangik.packclese.ui.detail.paket.DetailPaketActivity
+import com.bangik.packclese.ui.detail.titip.DetailTitipActivity
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -44,6 +46,16 @@ class HomeFragment : Fragment(),HomeContract.View {
 
         cardBersih.setOnClickListener{
             val detail = Intent(activity, DetailBersihActivity::class.java)
+            startActivity(detail)
+        }
+
+        cardPaket.setOnClickListener{
+            val detail = Intent(activity, DetailPaketActivity::class.java)
+            startActivity(detail)
+        }
+
+        cardTitip.setOnClickListener{
+            val detail = Intent(activity, DetailTitipActivity::class.java)
             startActivity(detail)
         }
     }

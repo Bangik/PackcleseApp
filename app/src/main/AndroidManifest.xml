@@ -20,8 +20,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.noActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.detail.bersih.DetailBersihActivity"></activity>
+        <activity android:name=".ui.detail.bersih.DetailBersihActivity" />
         <activity android:name=".ui.detail.laundry.DetailLaundryActivity" />
+        <activity android:name=".ui.detail.paket.DetailPaketActivity" />
+        <activity android:name=".ui.detail.titip.DetailTitipActivity" />
         <activity android:name=".ui.profile.account.EditActivity" />
         <activity android:name=".ui.auth.AuthActivity" />
         <activity android:name=".ui.MainActivity" />

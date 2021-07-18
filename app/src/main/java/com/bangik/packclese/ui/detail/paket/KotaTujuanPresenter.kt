@@ -13,7 +13,7 @@ class KotaTujuanPresenter(private val view:KotaTujuanContract.View) : KotaTujuan
     }
     override fun getKotaTujuan(id: String) {
         view.showLoading()
-        val disposable = HttpClient.getInstance().getApi()!!.datakota(id)
+        val disposable = HttpClient.getInstance().getApi()!!.datakotaTujuan(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

@@ -179,7 +179,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:text="Input Perkiraan Berat (Kg)" />
+                    android:text="Perkiraan Berat (gram)" />
 
                 <EditText
                     android:id="@+id/etBerat"
@@ -188,7 +188,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:background="@drawable/shape_rectangle_outline_8_020202"
-                    android:hint="Perkiraan berat (Kg)"
+                    android:hint="Perkiraan berat (gram)"
                     android:inputType="number"
                     android:padding="10dp" />
 
@@ -222,7 +222,6 @@
                     android:layout_marginTop="6dp"
                     android:background="@drawable/shape_rectangle_outline_8_020202"
                     android:hint="Masukan alamat tujuan dengan lengkap"
-                    android:inputType="number"
                     android:padding="10dp" />
 
             </LinearLayout>

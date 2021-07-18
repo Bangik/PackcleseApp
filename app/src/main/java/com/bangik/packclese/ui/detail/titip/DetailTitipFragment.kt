@@ -27,7 +27,6 @@ import java.util.*
 import kotlin.math.absoluteValue
 
 class DetailTitipFragment : Fragment(), TitipContract.View, HomeContract.View {
-    //TODO ( Data yang dikirim : total, price, waktu penitipan atau  start dan end , tambahan box, jenis titip, pictureTitip, id titip, quantity)
     private lateinit var presenterTitip: TitipPresenter
     private lateinit var presenterHome: HomePresenter
     var progressDialog : Dialog? = null
@@ -66,7 +65,16 @@ class DetailTitipFragment : Fragment(), TitipContract.View, HomeContract.View {
         presenterTitip.getTitip()
 
         btnOrderNow.setOnClickListener {
-            if(!etDateStart.text.isNullOrEmpty() and !etDateEnd.text.isNullOrEmpty() and !etJumlah.text.isNullOrEmpty()){
+            if(etDateStart.text.isNullOrEmpty()){
+                etDateStart.error = "Tanggal tidak boleh kosong"
+                etDateStart.requestFocus()
+            }else if(etDateEnd.text.isNullOrEmpty()){
+                etDateEnd.error = "Tanggal tidak boleh kosong"
+                etDateEnd.requestFocus()
+            }else if(etJumlah.text.isNullOrEmpty()){
+                etJumlah.error = "Jumlah tidak boleh kosong"
+                etJumlah.requestFocus()
+            }else{
                 date1 = dates.parse(etDateStart.text.toString())
                 date2 = dates.parse(etDateEnd.text.toString())
                 val difference: Long = abs(date1.time - date2.time)
@@ -108,9 +116,6 @@ class DetailTitipFragment : Fragment(), TitipContract.View, HomeContract.View {
 
                 bundle = bundleOf("dataTitip" to dataTitip)
                 Navigation.findNavController(it).navigate(R.id.action_detailTitipFragment_to_paymentTitipFragment, bundle)
-
-            }else{
-                Toast.makeText(context, "Input Harus di Isi", Toast.LENGTH_SHORT).show()
             }
         }
     }

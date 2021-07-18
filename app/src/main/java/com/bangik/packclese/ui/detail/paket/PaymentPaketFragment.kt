@@ -1,4 +1,4 @@
-package com.bangik.packclese.ui.detail.titip
+package com.bangik.packclese.ui.detail.paket
 
 import android.app.Dialog
 import android.content.Intent
@@ -12,44 +12,50 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 import com.bangik.packclese.Packclese
 import com.bangik.packclese.R
-import com.bangik.packclese.model.response.checkout.CheckoutTitipResponse
+import com.bangik.packclese.model.response.checkout.CheckoutPaketResponse
 import com.bangik.packclese.model.response.login.User
 import com.bangik.packclese.utils.Helpers.formatPrice
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.fragment_payment_titip.*
+import kotlinx.android.synthetic.main.fragment_payment_paket.*
 
-class PaymentTitipFragment : Fragment(), PaymentTitipContract.View {
+class PaymentPaketFragment : Fragment(), PaymentPaketContract.View {
 
     var progressDialog: Dialog?= null
-    lateinit var presenter: PaymentTitipPresenter
+    lateinit var presenter: PaymentPresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_payment_titip, container, false)
+        return inflater.inflate(R.layout.fragment_payment_paket, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        (activity as DetailTitipActivity).toolbarPayment()
-        var data = arguments?.getParcelable<DataTitip>("dataTitip")
+
+        var data = arguments?.getParcelable<DataPaket>("dataPaket")
         initView(data)
         initViews()
-        presenter = PaymentTitipPresenter(this)
+        presenter = PaymentPresenter(this)
     }
 
-    private fun initView(data: DataTitip?) {
+    private fun initView(data: DataPaket?) {
         Glide.with(requireContext())
-            .load(data?.pictureTitip)
+            .load(data?.picturePaket)
             .into(ivPoster)
 
-        tvTitle.text = data?.jenisTitip
-        tvNameItem.text = data?.jenisTitip
+        tvTitle.text = data?.jenisPaket
         tvPrice.formatPrice(data?.price.toString())
-        textView14.text = data?.quantity + " items"
+        textView14.text = data?.weight + " gram"
+        tvHargaOngkir.formatPrice(data?.ongkir.toString())
         tvHarga.formatPrice(data?.price.toString())
         tvTotal.formatPrice(data?.total.toString())
+
+        tvOrigin.text = data?.origin
+        tvDestination.text = data?.destination
+        tvWeight.text = data?.weight + " gram"
+        tvKurir.text = data?.courier
+        tvEtd.text = data?.etd + " Hari"
 
         var user = Packclese.getApp().getUser()
         var userResponse = Gson().fromJson(user, User::class.java)
@@ -69,15 +75,18 @@ class PaymentTitipFragment : Fragment(), PaymentTitipContract.View {
             presenter.getCheckout(
                 userResponse?.id.toString(),
                 data?.total.toString(),
-                data?.idTitip.toString(),
-                userResponse?.address.toString(),
-                data?.dateStart.toString(),
-                data?.dateEnd.toString(),
-                data?.quantity.toString(),
+                data?.idPaket.toString(),
+                data?.address.toString(),
+                data?.origin.toString(),
+                data?.destination.toString(),
+                data?.weight.toString(),
+                data?.courier.toString(),
+                data?.ongkir.toString(),
                 paymentMethod,
                 it
             )
         }
+
     }
 
     private fun initViews(){
@@ -91,14 +100,13 @@ class PaymentTitipFragment : Fragment(), PaymentTitipContract.View {
         }
     }
 
-    override fun onCheckoutSuccess(checkoutTitipResponse: CheckoutTitipResponse, view: View) {
-        if (!checkoutTitipResponse.payment_url.equals("COD")){
+    override fun onCheckoutSuccess(checkoutPaketResponse: CheckoutPaketResponse, view: View) {
+        if(!checkoutPaketResponse.payment_url.equals("COD")){
             val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse(checkoutTitipResponse.payment_url)
+            i.data = Uri.parse(checkoutPaketResponse.payment_url)
             startActivity(i)
         }
-
-        Navigation.findNavController(view).navigate(R.id.action_paymentTitipFragment_to_paymentTitipSuccessFragment)
+        Navigation.findNavController(view).navigate(R.id.action_paymentPaketFragment_to_paymentPaketSuccessFragment)
     }
 
     override fun onCheckoutFailed(message: String) {
@@ -112,6 +120,4 @@ class PaymentTitipFragment : Fragment(), PaymentTitipContract.View {
     override fun dismissLoading() {
         progressDialog?.dismiss()
     }
-
-
 }
