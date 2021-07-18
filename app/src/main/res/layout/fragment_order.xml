@@ -17,6 +17,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
+        android:layout_marginBottom="48dp"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +55,6 @@
         android:id="@+id/ll_empty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:gravity="center"
         android:visibility="gone"
         android:orientation="vertical"
@@ -75,14 +75,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Ouch! Hungry" />
+            android:text="Ouch! Dirty" />
 
         <TextView
             style="@style/TextView.PoppinsNormal14sp8D92A3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:text="Seem like you have not\nordered any food yet"
+            android:text="Seem like you have not\nordered any service yet"
             android:textAlignment="center" />
 
         <Button

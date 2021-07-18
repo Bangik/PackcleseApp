@@ -91,7 +91,7 @@ class DetailPaketFragment : Fragment(), HomeContract.View, ProvinsiContract.View
                     origin,
                     destination,
                     etBerat.text.toString(),
-                    service,
+                    courier + " " + service,
                     ongkosKirim.toString(),
                     jenisPaket,
                     picturePaket,
@@ -205,7 +205,7 @@ class DetailPaketFragment : Fragment(), HomeContract.View, ProvinsiContract.View
                     val kota = kotaResponse.data[i].type + " " + kotaResponse.data[i].city_name
                     if (kota.equals(spinerKotaAsal.selectedItem.toString())){
                         idKotaAsal = kotaResponse.data[i].city_id
-                        origin = kotaResponse.data[i].city_name
+                        origin = kotaResponse.data[i].type + " " + kotaResponse.data[i].city_name
                     }
                 }
             }
@@ -237,7 +237,7 @@ class DetailPaketFragment : Fragment(), HomeContract.View, ProvinsiContract.View
                     val kota = kotaTujuanResponse.data[i].type + " " + kotaTujuanResponse.data[i].city_name
                     if (kota.equals(spinerKotaTujuan.selectedItem.toString())){
                         idKotaTujuan = kotaTujuanResponse.data[i].city_id
-                        destination = kotaTujuanResponse.data[i].city_name
+                        destination = kotaTujuanResponse.data[i].type + " " + kotaTujuanResponse.data[i].city_name
                     }
                 }
             }
