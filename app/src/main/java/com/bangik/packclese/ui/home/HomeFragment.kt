@@ -17,6 +17,7 @@ import com.bangik.packclese.ui.detail.laundry.DetailLaundryActivity
 import com.bangik.packclese.ui.detail.paket.DetailPaketActivity
 import com.bangik.packclese.ui.detail.titip.DetailTitipActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -73,12 +74,12 @@ class HomeFragment : Fragment(),HomeContract.View {
         var user = Packclese.getApp().getUser()
         var userResponse = Gson().fromJson(user, User::class.java)
 
-//        if (!userResponse.profile_photo_path.isNullOrEmpty()) {
-//            Glide.with(requireActivity())
-//                .load(userResponse.profile_photo_path)
-//                .apply(RequestOptions.circleCropTransform())
-//                .into(ivProfile)
-//        }
+        if (!userResponse.profile_photo_path.isNullOrEmpty()) {
+            Glide.with(requireActivity())
+                .load(userResponse.profile_photo_path)
+                .apply(RequestOptions.circleCropTransform())
+                .into(ivProfile)
+        }
     }
 
     override fun onHomeSuccess(homeResponse: HomeResponse) {

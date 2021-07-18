@@ -16,85 +16,40 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/header_background"
-            android:padding="10dp"
-            app:layout_constraintTop_toTopOf="parent">
+            android:background="#FFF">
+
+            <ImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/ic_picture_empty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/tvTitle"
                 style="@style/TextView.PoppinsNormal22sp020202"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="30dp"
                 android:text="Packclese"
-                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/tvSubtitle"
                 style="@style/TextView.PoppinsNormal14sp8D92A3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginBottom="24dp"
                 android:text="Choose You Need Service"
-                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <ImageView
-                android:id="@+id/imageMenu"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_menu"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/tvSubtitle"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.338"
-                app:tint="@color/white" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageMenu">
-
-                <EditText
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="@string/search_elements"
-                    android:imeOptions="actionSearch"
-                    android:inputType="text"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="15dp"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="15sp"
-                    android:importantForAutofill="no" />
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/search_icon_background"
-                    android:contentDescription="@string/app_name"
-                    android:padding="6dp"
-                    android:src="@drawable/ic_search"
-                    app:tint="@color/colorPrimary" />
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -148,7 +103,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="12dp"
-                        android:rating="4"
+                        android:rating="5"
                         android:theme="@style/RatingBar" />
                 </LinearLayout>
 
@@ -245,7 +200,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="12dp"
-                        android:rating="4"
+                        android:rating="5"
                         android:theme="@style/RatingBar" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -293,13 +248,13 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="12dp"
-                        android:rating="4"
+                        android:rating="5"
                         android:theme="@style/RatingBar" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
         </GridLayout>
 
     </LinearLayout>
-
 </ScrollView>
