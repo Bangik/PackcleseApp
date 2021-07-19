@@ -128,4 +128,7 @@ interface Endpoint {
                       @Field("end") end:String,
                       @Field("quantity") quantity:String,
                       @Field("paymentMethod") paymentMethod:String) : Observable<Wrapper<CheckoutTitipResponse>>
+
+    @POST("logout")
+    fun logout() : Observable<Wrapper<Any>>
 }

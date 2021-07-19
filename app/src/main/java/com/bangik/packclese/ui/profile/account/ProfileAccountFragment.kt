@@ -9,14 +9,17 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bangik.packclese.Packclese
 import com.bangik.packclese.R
 import com.bangik.packclese.model.dummy.ProfileMenuModel
+import com.bangik.packclese.ui.auth.AuthActivity
 import com.bangik.packclese.ui.profile.ProfileMenuAdapter
 import kotlinx.android.synthetic.main.fragment_profile_account.*
 
-class ProfileAccountFragment : Fragment(), ProfileMenuAdapter.ItemAdapterCallback {
+class ProfileAccountFragment : Fragment(), ProfileMenuAdapter.ItemAdapterCallback, LogoutContract.View {
 
     private var menuArrayList: ArrayList<ProfileMenuModel> = ArrayList()
+    lateinit var presenter: LogoutPresenter
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +33,7 @@ class ProfileAccountFragment : Fragment(), ProfileMenuAdapter.ItemAdapterCallbac
         super.onActivityCreated(savedInstanceState)
 
         initDataDummy()
+        presenter = LogoutPresenter(this)
 
         var adapter = ProfileMenuAdapter(menuArrayList, this)
         var layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(activity)
@@ -42,7 +46,7 @@ class ProfileAccountFragment : Fragment(), ProfileMenuAdapter.ItemAdapterCallbac
         menuArrayList.add(ProfileMenuModel("Edit Profile"))
         menuArrayList.add(ProfileMenuModel("Home Address"))
         menuArrayList.add(ProfileMenuModel("Security"))
-        menuArrayList.add(ProfileMenuModel("Payment"))
+        menuArrayList.add(ProfileMenuModel("Logout"))
     }
 
     override fun onClick(v: View, data: ProfileMenuModel) {
@@ -57,8 +61,19 @@ class ProfileAccountFragment : Fragment(), ProfileMenuAdapter.ItemAdapterCallbac
         }else if (data.title == "Security"){
             Toast.makeText(context, "Security", Toast.LENGTH_SHORT).show()
         }else{
-            Toast.makeText(context, "Payment", Toast.LENGTH_SHORT).show()
+            presenter.logout(this)
         }
+    }
+
+    override fun onLogoutSuccess(view: LogoutContract.View) {
+        Packclese.getApp().setToken("")
+        val intent = Intent(activity, AuthActivity::class.java)
+        startActivity(intent)
+        activity?.finish()
+    }
+
+    override fun onLogoutFailed(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
 }
