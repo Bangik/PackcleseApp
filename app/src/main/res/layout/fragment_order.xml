@@ -86,11 +86,12 @@
             android:textAlignment="center" />
 
         <Button
+            android:id="@+id/findServices"
             style="@style/Button.Primary"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Find Foods"
+            android:text="Find Services"
             android:textAllCaps="false" />
 
     </LinearLayout>

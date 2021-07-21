@@ -23,7 +23,14 @@ import com.bangik.packclese.ui.home.HomePresenter
 import com.bangik.packclese.utils.Helpers
 import com.bangik.packclese.utils.Helpers.formatPrice
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_detail_bersih.*
 import kotlinx.android.synthetic.main.fragment_detail_paket.*
+import kotlinx.android.synthetic.main.fragment_detail_paket.btnOrderNow
+import kotlinx.android.synthetic.main.fragment_detail_paket.ivPoster
+import kotlinx.android.synthetic.main.fragment_detail_paket.ratingBar
+import kotlinx.android.synthetic.main.fragment_detail_paket.tvDesc
+import kotlinx.android.synthetic.main.fragment_detail_paket.tvTitle
+import kotlinx.android.synthetic.main.fragment_detail_paket.tvTotal
 
 class DetailPaketFragment : Fragment(), HomeContract.View, ProvinsiContract.View, KotaContract.View, KotaTujuanContract.View, PaketContract.View, CekongkirContract.View {
 
@@ -253,7 +260,6 @@ class DetailPaketFragment : Fragment(), HomeContract.View, ProvinsiContract.View
     override fun onPaketSuccess(paketResponse: ServiceResponse) {
         price = paketResponse.data[0].price
         idPaket = paketResponse.data[0].id.toString()
-        ratingBar.numStars = paketResponse.data[0].rate
         tvTotal.formatPrice(paketResponse.data[0].price.toString())
     }
 
@@ -267,6 +273,7 @@ class DetailPaketFragment : Fragment(), HomeContract.View, ProvinsiContract.View
             .into(ivPoster)
         tvTitle.text = homeResponse.data[2].jenis.toString()
         tvDesc.text = homeResponse.data[2].description.toString()
+        ratingBar.rating = homeResponse.data[2].rate
         jenisPaket = homeResponse.data[2].jenis.toString()
         picturePaket = homeResponse.data[2].picturePath.toString()
     }

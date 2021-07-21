@@ -29,9 +29,6 @@ data class Data(
     @SerializedName("price")
     val price: Int,
     @Expose
-    @SerializedName("rate")
-    val rate: Int,
-    @Expose
     @SerializedName("updated_at")
     val updated_at: String
 ) : Parcelable

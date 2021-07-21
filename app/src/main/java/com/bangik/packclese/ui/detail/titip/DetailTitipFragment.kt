@@ -20,7 +20,14 @@ import com.bangik.packclese.ui.home.HomePresenter
 import com.bangik.packclese.utils.Helpers
 import com.bangik.packclese.utils.Helpers.formatPrice
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_detail_bersih.*
 import kotlinx.android.synthetic.main.fragment_detail_titip.*
+import kotlinx.android.synthetic.main.fragment_detail_titip.btnOrderNow
+import kotlinx.android.synthetic.main.fragment_detail_titip.ivPoster
+import kotlinx.android.synthetic.main.fragment_detail_titip.ratingBar
+import kotlinx.android.synthetic.main.fragment_detail_titip.tvDesc
+import kotlinx.android.synthetic.main.fragment_detail_titip.tvTitle
+import kotlinx.android.synthetic.main.fragment_detail_titip.tvTotal
 import java.lang.Math.abs
 import java.text.SimpleDateFormat
 import java.util.*
@@ -165,7 +172,6 @@ class DetailTitipFragment : Fragment(), TitipContract.View, HomeContract.View {
         for(i in titipResponse.data.indices){
             name = Helpers.append(name, titipResponse.data[i].name)
         }
-        ratingBar.numStars = titipResponse.data[0].rate
         spinerTitip.adapter =
             activity?.let { ArrayAdapter(it, android.R.layout.simple_list_item_1, name) }
 
@@ -201,6 +207,7 @@ class DetailTitipFragment : Fragment(), TitipContract.View, HomeContract.View {
             .into(ivPoster)
         tvTitle.text = homeResponse.data[3].jenis
         tvDesc.text = homeResponse.data[3].description
+        ratingBar.rating = homeResponse.data[3].rate
         pictureTitip = homeResponse.data[3].picturePath.toString()
     }
 

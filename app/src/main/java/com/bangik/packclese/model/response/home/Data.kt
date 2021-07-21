@@ -26,6 +26,9 @@ data class Data(
     @SerializedName("slug")
     val slug: String?,
     @Expose
+    @SerializedName("rate")
+    val rate: Float,
+    @Expose
     @SerializedName("updated_at")
     val updated_at: String?
 ) : Parcelable

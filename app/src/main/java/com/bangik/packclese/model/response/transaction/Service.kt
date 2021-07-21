@@ -29,9 +29,6 @@ data class Service(
     @SerializedName("price")
     val price: Int,
     @Expose
-    @SerializedName("rate")
-    val rate: Int,
-    @Expose
     @SerializedName("updated_at")
     val updated_at: String,
     @Expose

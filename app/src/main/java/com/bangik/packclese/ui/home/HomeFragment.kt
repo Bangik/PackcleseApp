@@ -100,6 +100,11 @@ class HomeFragment : Fragment(),HomeContract.View {
         tv2.text = homeResponse.data.get(1).jenis
         tv3.text = homeResponse.data.get(2).jenis
         tv4.text = homeResponse.data.get(3).jenis
+
+        rbService1.rating = homeResponse.data[0].rate
+        rbService2.rating = homeResponse.data[1].rate
+        rbService3.rating = homeResponse.data[2].rate
+        rbService4.rating = homeResponse.data[3].rate
     }
 
     override fun onHomeFailed(message: String) {

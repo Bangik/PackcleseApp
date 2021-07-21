@@ -40,4 +40,8 @@ class AuthActivity : AppCompatActivity() {
         toolbar.visibility = View.GONE
     }
 
+    override fun onBackPressed() {
+        finish()
+    }
+
 }

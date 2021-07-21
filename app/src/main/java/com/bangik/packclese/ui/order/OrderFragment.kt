@@ -1,15 +1,18 @@
 package com.bangik.packclese.ui.order
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
 import com.bangik.packclese.R
 import com.bangik.packclese.model.response.transaction.Data
 import com.bangik.packclese.model.response.transaction.TransactionResponse
+import com.readystatesoftware.chuck.internal.ui.MainActivity
 import kotlinx.android.synthetic.main.fragment_order.*
 import kotlinx.android.synthetic.main.layout_toolbar.view.*
 
@@ -36,6 +39,10 @@ class OrderFragment : Fragment(), OrderContract.View {
         initView()
         presenter = OrderPresenter(this)
         presenter.getTransaction()
+
+        findServices.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.navigation_home)
+        }
     }
 
     private fun initView() {

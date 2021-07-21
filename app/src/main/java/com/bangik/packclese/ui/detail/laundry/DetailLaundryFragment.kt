@@ -19,7 +19,14 @@ import com.bangik.packclese.ui.home.HomePresenter
 import com.bangik.packclese.utils.Helpers.append
 import com.bangik.packclese.utils.Helpers.formatPrice
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_detail_bersih.*
 import kotlinx.android.synthetic.main.fragment_detail_laundry.*
+import kotlinx.android.synthetic.main.fragment_detail_laundry.btnOrderNow
+import kotlinx.android.synthetic.main.fragment_detail_laundry.ivPoster
+import kotlinx.android.synthetic.main.fragment_detail_laundry.ratingBar
+import kotlinx.android.synthetic.main.fragment_detail_laundry.tvDesc
+import kotlinx.android.synthetic.main.fragment_detail_laundry.tvTitle
+import kotlinx.android.synthetic.main.fragment_detail_laundry.tvTotal
 
 class DetailLaundryFragment : Fragment(), LaundryContract.View, HomeContract.View{
 
@@ -92,7 +99,6 @@ class DetailLaundryFragment : Fragment(), LaundryContract.View, HomeContract.Vie
         for(i in laundryResponse.data.indices){
             name = append(name, laundryResponse.data[i].name)
         }
-        ratingBar.rating = laundryResponse.data[0].rate.toFloat()
         spinerLaundry.adapter =
             activity?.let { ArrayAdapter(it, android.R.layout.simple_list_item_1, name) }
 
@@ -128,6 +134,7 @@ class DetailLaundryFragment : Fragment(), LaundryContract.View, HomeContract.Vie
             .into(ivPoster)
         tvTitle.text = homeResponse.data[0].jenis
         tvDesc.text = homeResponse.data[0].description
+        ratingBar.rating = homeResponse.data[0].rate
         pictureLaundry = homeResponse.data[0].picturePath.toString()
     }
 

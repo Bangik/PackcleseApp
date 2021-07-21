@@ -90,6 +90,7 @@ class DetailBersihFragment : Fragment(), BersihContract.View, HomeContract.View 
             .into(ivPoster)
         tvTitle.text = homeResponse.data[1].jenis.toString()
         tvDesc.text = homeResponse.data[1].description.toString()
+        ratingBar.rating = homeResponse.data[1].rate
         jenisBersih = homeResponse.data[1].jenis.toString()
         pictureBersih = homeResponse.data[1].picturePath.toString()
     }
@@ -101,7 +102,6 @@ class DetailBersihFragment : Fragment(), BersihContract.View, HomeContract.View 
     override fun onBersihSuccess(bersihResponse: ServiceResponse) {
         price = bersihResponse.data[0].price
         idBersih = bersihResponse.data[0].id.toString()
-        ratingBar.numStars = bersihResponse.data[0].rate
         tvTotal.formatPrice(bersihResponse.data[0].price.toString())
     }
 
